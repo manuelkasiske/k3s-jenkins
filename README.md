@@ -28,14 +28,14 @@ kubectl apply -f rbac-config.yaml
 helm init --service-account tiller
 ```
 
-# prepare the storage class: local-path
+# Prepare The Storage Class: local-path
 ```sh
 curl -LO https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
 cat local-path-storage.yaml 
 kubectl apply -f local-path-storage.yaml 
 ```
 
-# install
+# Install Jenkins
 ```sh
 helm install -f jenkins-values.yaml stable/jenkins
 ```
