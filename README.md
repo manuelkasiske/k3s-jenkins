@@ -40,7 +40,8 @@ kubectl apply -f local-path-storage.yaml
 
 # Install Jenkins
 
-In the jenkins-values.yaml persistence volume claim has been overwritten to storageClass: local-path
+In the jenkins-values.yaml persistence volume claim has been overwritten to storageClass: local-path.
+
 Original file is located here: https://raw.githubusercontent.com/helm/charts/master/stable/jenkins/values.yaml
 
 Files will be written to: /opt/local-path-provisioner/
