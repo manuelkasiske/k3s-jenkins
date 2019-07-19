@@ -1,5 +1,6 @@
-#Install Helm
+# Install Helm
 
+```sh
 curl -LO https://git.io/get_helm.sh
 chmod 700 get_helm.sh
 ./get_helm.sh
@@ -25,15 +26,19 @@ subjects:
 EOF
 kubectl apply -f rbac-config.yaml
 helm init --service-account tiller
+```
 
-
-#prepare the storage class: local-path
+# prepare the storage class: local-path
+```sh
 curl -LO https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
 cat local-path-storage.yaml 
 kubectl apply -f local-path-storage.yaml 
+```
 
-#install
+# install
+```sh
 helm install -f jenkins-values.yaml stable/jenkins
+```
 
 In the jenkins-values.yaml persistence volume claim has been overwritten to storageClass: local-path
 
