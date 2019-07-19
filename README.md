@@ -29,6 +29,9 @@ helm init --service-account tiller
 ```
 
 # Prepare The Storage Class: local-path
+
+Jenkins needs a persistence volume claim. In that case we can also use a local storage. 
+
 ```sh
 curl -LO https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
 cat local-path-storage.yaml 
@@ -36,13 +39,18 @@ kubectl apply -f local-path-storage.yaml
 ```
 
 # Install Jenkins
+
+In the jenkins-values.yaml persistence volume claim has been overwritten to storageClass: local-path
+Original file is located here: https://raw.githubusercontent.com/helm/charts/master/stable/jenkins/values.yaml
+
+Files will be written to: /opt/local-path-provisioner/
+
+Now we can install jenkins:
+
 ```sh
 helm install -f jenkins-values.yaml stable/jenkins
 ```
 
-In the jenkins-values.yaml persistence volume claim has been overwritten to storageClass: local-path
-
-see /opt/local-path-provisioner/
 
 
 
